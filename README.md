@@ -21,7 +21,6 @@ Once you flashed the Nvidia Image on the SD card, put it in the Jetson Nano and 
 
 I have tested on Ubuntu 16.04 with ROS Melodic with an NVIDIA Jetson Nano with python 2.7 (and thus pip). The code may work on other systems.
 
-- **Step 1**
 
 One the Nvidia started, you can follow the repository of [Deep Pose object](https://github.com/NVlabs/Deep_Object_Pose) installation step by step until:
 
@@ -30,3 +29,39 @@ $ pip install -r requirements.txt
 ```
 
 Here you might have some trouble instaling libraries versions with the ones compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
+
+Then you can follow steps 5 and 6 of the Installation process, but remember to replace * * kinetic * * by * * melodic * *.
+
+
+## Running
+
+- **1 Start ROS master**
+```
+$ cd ~/catkin_ws
+$ source devel/setup.bash
+$ roscore
+```
+
+- **2 Start camera node**
+```
+$ cd catkin_ws
+$ source devel/setup.bash
+$ roslaunch openni2_launch openni2.launch
+```
+
+- **3 Edit config file**
+As I am using a USB camera, you need to edit the config file at ```~/catkin_ws/src/dope/config/config_pose.yaml``` and change the two first lines to:
+```
+topic_camera: "/camera/rgb/image_raw"
+topic_camera_info: "/camera/rgb/camera_info"
+```
+All the other parameters are detailled in the Deep Pose Object repository.
+
+- **4 Start DOPE node**
+```
+$ cd catkin_ws
+$ source devel/setup.bash
+$ roslaunch openni2_launch openni2.launch
+```
+
+
