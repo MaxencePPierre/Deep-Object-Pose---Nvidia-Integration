@@ -76,7 +76,7 @@ Then select
 2. add, by topic 
 3. Select dope/image
 
-You will see as follow: ![soup detection](http://url/to/img.png)
+You will see as follow: ![soup_detection](img/soup_detection.png)
 
 
 ## Tests
@@ -86,7 +86,8 @@ Now that that the DOPE ROS package for detection is set up and running to detect
 **1. CPU**
 
 This is the main problem to archieve. Because once you started the three ros nodes, the Nvidia has directly slowed down. So I used  ```htop``` to see the CPU, RAM and SWAP memory use.
-![htop](http://url/to/img.png)
+
+![htop](img/htop.png)
 
 I looked at it without having rviz running, that may also increase memory consumption depending on the topics you are listenning to. 
 As we can see, all RAM **plus** swap memory are used, that might explain why the Nvidia slowed down. 
@@ -109,6 +110,6 @@ If you look at the config file parameters, there is the ```downscale_height```: 
 
 By default, this value is set to 500px, I change it to 400 and then to 300px. And what we can see, it divides by two the SWAP memory use thus increase performance.
 
-![downscale_height_300](http://url/to/img.png)
+![downscale_height_300](img/downscale_height_300.png)
 
 NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
