@@ -64,15 +64,16 @@ $ source devel/setup.bash
 $ roslaunch openni2_launch openni2.launch
 ```
 
+- **5 rviz**
+One the master, openni and dope nodes are running, you can see the object detected using rviz tool. In my case, I only had the weight soup object uncommented at first in the config file (*weights*: dictionary of object names and there weights path name, **comment out any line to disable detection/estimation of that object**).
 
+```
+$ rviz
+```
 
+Then select 
+- 1. camera_link 
+- 2. add, by topic 
+- 3. Select dope/image
 
-Citation
-@inproceedings{tremblay2018corl:dope,
- author = {Jonathan Tremblay and Thang To and Balakumar Sundaralingam and Yu Xiang and Dieter Fox and Stan Birchfield},
- title = {Deep Object Pose Estimation for Semantic Robotic Grasping of Household Objects},
- booktitle = {Conference on Robot Learning (CoRL)},
- url = "https://arxiv.org/abs/1809.10790",
- year = 2018
-}
 
