@@ -24,6 +24,6 @@ I have tested on Ubuntu 16.04 with ROS Melodic with an NVIDIA Jetson Nano with p
 One the Nvidia started, you can follow the repository of [Deep Pose object] https://github.com/NVlabs/Deep_Object_Pose step by step 
 until:
 
-'''bash
+```
 pip install -r requirements.txt
-'''
+```
