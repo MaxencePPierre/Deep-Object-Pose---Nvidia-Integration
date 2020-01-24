@@ -72,8 +72,15 @@ $ rviz
 ```
 
 Then select 
-- 1. camera_link 
-- 2. add, by topic 
-- 3. Select dope/image
+1. camera_link 
+2. add, by topic 
+3. Select dope/image
+
+You will see as follow: ![soup detection](http://url/to/img.png)
+
+
+## Tests
+
+Now that that the DOPE ROS package for detection is set up and running to detect only one object for now, I am going to present here some tests I realized to see how far the Nvidia can performs objects detection using DOPE.
 
 
