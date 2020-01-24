@@ -81,6 +81,20 @@ You will see as follow: ![soup detection](http://url/to/img.png)
 
 ## Tests
 
-Now that that the DOPE ROS package for detection is set up and running to detect only one object for now, I am going to present here some tests I realized to see how far the Nvidia can performs objects detection using DOPE.
+Now that that the DOPE ROS package for detection is set up and running to detect only one object for now, I am going to present here some tests I realized to see how far the Nvidia can performs objects detection using DOPE. The main challenge of this tests is two observe how effecient can be the Nvidia. 
 
+-**1. CPU**
+This is the main problem to archieve. Because once you started the three ros nodes, the Nvidia has directly slowed down. So I used  ```htop``` to see the CPU, RAM and SWAP memory use.
+![htop](http://url/to/img.png)
+I looked at it without having rviz running, that may also increase memory consumption depending on the topics you are listenning to. 
+As we can see, all RAM **plus** swap memory are used, that might explain why the Nvidia slowed down. 
 
+-**2. Temperature**
+As I said at the beginning, a fan is required to run the ros nodes on the Nvidia. At first, I started without any fan, and the Nvidia quickly freezed and crashed. With the CLI tool ```$ watch sensors``` (sudo apt-get install lm-sensors), you can see the temperature evolving over the time. 
+With a desk Fan, it can maintain the CPU temperature around 24°C. If you do not use one, the temperature can reach 57°C and beyond. I suggest you to keep the temperature as low as possible. I did not get the maximum temperature possible, but the Nvidia tends to freeze around 60°C.
+
+-**3. Objects Detected**
+The Deep Object Pose Estimation can detect until 7 objects: Cracket, Gelatin, Meat, Mustard, Sugar, Soup and Bleach. As I said, the object detection can be able/disable from the config file with the weights dictionnary. I started with the soup, then I uncommented the mustard. After a while, the Nvidia crashed. I re started with only one object, then stop the dope nope, edit the config file and uncomment a second object and re start the dope node.
+I did it couples times to test, and it seems that the Nvidia cannot support two objects detection for more than 20/30 seconds before crashing.
+
+-**4. Edit config file**
