@@ -3,14 +3,14 @@
 This repository is a tutorial for embedding a Neural network for object detection through live camera streaming on a Nvidia Jetson nano.
 The neural networkd used is the official DOPE ROS package for detection and 6-DoF pose estimation of known objects from an RGB camera. The network has been trained on the following YCB objects: cracker box, sugar box, tomato soup can, mustard bottle, potted meat can, and gelatin box. 
 
-The official repository is available [here](https://github.com/NVlabs/Deep_Object_Pose)
+The official repository is available [here](https://github.com/NVlabs/Deep_Object_Pose).
 
 
 ## Requirements
  - A Nvidia Jetson nano with at least 4BG ram
  - Micro-USB power supply 5V - 2A for Nvidia Jetson (I used the official raspberry Pi one)
  - A USB RGB Camera (I used a Kinect Asus Xtion)
- - The [official package](https://github.com/NVlabs/Deep_Object_Pose) of deep pose object detection 
+ - Download the [official package](https://github.com/NVlabs/Deep_Object_Pose) of deep pose object detection 
  - A desk fan or an Nvidia Jetson compatible one
 
 
@@ -64,4 +64,15 @@ $ source devel/setup.bash
 $ roslaunch openni2_launch openni2.launch
 ```
 
+
+
+
+Citation
+@inproceedings{tremblay2018corl:dope,
+ author = {Jonathan Tremblay and Thang To and Balakumar Sundaralingam and Yu Xiang and Dieter Fox and Stan Birchfield},
+ title = {Deep Object Pose Estimation for Semantic Robotic Grasping of Household Objects},
+ booktitle = {Conference on Robot Learning (CoRL)},
+ url = "https://arxiv.org/abs/1809.10790",
+ year = 2018
+}
 
