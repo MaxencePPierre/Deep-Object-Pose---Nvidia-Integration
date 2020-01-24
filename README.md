@@ -119,7 +119,9 @@ NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
 - **4. Camera framerate**
 
 By default, the camera framrate is 30fps. But chanfing this value, it may reduce the memory consumption. I did not archieve to do it but I can present you how far I went. 
+
 First, the ros openni2 package does not have a parameter to change the framerate. So you have to use the [usb_cam](http://wiki.ros.org/usb_cam) package instead that has a ```framerate``` parameter. 
+
 What you have to do:
 
 ```
@@ -130,4 +132,5 @@ $ vi launch usb_cam.launch
 
 Add the line ```<param name="framerate" value="10" />``` to test for 10fps.
 The first parameter should be ```<param name="video_device" value="/dev/video0" />```. You need to change ```/dev/video0``` value to the one corresponding to the usb camera. 
+This is where I had some trouble to continue. ```lsusb``` or ```lspci``` can help you to get the camera. I did not understood so far, what to replace.
 
