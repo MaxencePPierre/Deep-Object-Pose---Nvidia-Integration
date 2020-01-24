@@ -118,7 +118,7 @@ NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
 
 - **4. Camera framerate**
 
-By default, the camera framrate is 30fps. But chanfing this value, it may reduce the memory consumption. I did not archieve to do it but I can present you how far I went. 
+By default, the camera framrate is 30fps. But changing this value, it may reduce the memory consumption. I did not archieve to do it but I can present you how far I went. 
 
 First, the ros openni2 package does not have a parameter to change the framerate. So you have to use the [usb_cam](http://wiki.ros.org/usb_cam) package instead that has a ```framerate``` parameter. 
 
