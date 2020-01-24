@@ -76,7 +76,8 @@ Then select
 2. add, by topic 
 3. Select dope/image
 
-You will see as follow: ![soup_detection](img/soup_detection.png)
+You will see as follow: 
+![soup_detection](img/soup_detection.png)
 
 
 ## Tests
@@ -113,3 +114,9 @@ By default, this value is set to 500px, I change it to 400 and then to 300px. An
 ![downscale_height_300](img/downscale_height_300.png)
 
 NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
+
+
+- **4. Camera framerate**
+
+By default, the camera framrate is 30fps. But chanfing this value, it may reduce the memory consumption. I did not archieve to do it but I can present you how far I went. 
+First, the ros openni2 package does not have a parameter to change the framerate. So you have to use usb_cam package instead that permits it
