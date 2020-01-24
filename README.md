@@ -30,7 +30,7 @@ $ pip install -r requirements.txt
 
 Here you might have some trouble instaling libraries versions with the ones compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
 
-Then you can follow steps 5 and 6 of the Installation process, but remember to replace * * kinetic * * by * * melodic * *.
+Then you can follow steps 5 and 6 of the Installation process, but remember to replace *kinetic* by *melodic*.
 
 
 ## Running
@@ -55,7 +55,7 @@ As I am using a USB camera, you need to edit the config file at ```~/catkin_ws/s
 topic_camera: "/camera/rgb/image_raw"
 topic_camera_info: "/camera/rgb/camera_info"
 ```
-All the other parameters are detailled in the Deep Pose Object repository.
+ All the other parameters are detailled in the Deep Pose Object repository.
 
 - **4 Start DOPE node**
 ```
