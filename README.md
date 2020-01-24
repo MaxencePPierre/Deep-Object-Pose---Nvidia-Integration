@@ -23,11 +23,10 @@ I have tested on Ubuntu 16.04 with ROS Melodic with an NVIDIA Jetson Nano with p
 
 - **Step 1**
 
-One the Nvidia started, you can follow the repository of [Deep Pose object](https://github.com/NVlabs/Deep_Object_Pose) step by step 
-until:
+One the Nvidia started, you can follow the repository of [Deep Pose object](https://github.com/NVlabs/Deep_Object_Pose) installation step by step until:
 
 ```
 $ pip install -r requirements.txt
 ```
 
-Where you might have some trouble instaling libraries versions with versions compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
+Here you might have some trouble instaling libraries versions with the ones compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
