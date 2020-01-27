@@ -1,7 +1,7 @@
 # Deep-Object-Pose---Nvidia-Integration
 
 This repository is a tutorial for embedding a Neural network for object detection through live camera streaming on a Nvidia Jetson nano.
-The neural networkd used is the official DOPE ROS package for detection and 6-DoF pose estimation of known objects from an RGB camera. The network has been trained on the following YCB objects: cracker box, sugar box, tomato soup can, mustard bottle, potted meat can, and gelatin box. 
+The neural network used is the official DOPE ROS package for detection and 6-DoF pose estimation of known objects from an RGB camera. The network has been trained on the following YCB objects: cracker box, sugar box, tomato soup can, mustard bottle, potted meat can, and gelatin box. 
 
 The official repository is available [here](https://github.com/NVlabs/Deep_Object_Pose).
 
@@ -116,7 +116,7 @@ By default, this value is set to 500px, I change it to 400 and then to 300px. An
 NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
 
 
-- **4. Camera framerate**
+- **5. Camera framerate**
 
 By default, the camera framrate is 30fps. But changing this value, it may reduce the memory consumption. I did not archieve to do it but I can present you how far I went. 
 
@@ -134,3 +134,7 @@ Add the line ```<param name="framerate" value="10" />``` to test for 10fps.
 The first parameter should be ```<param name="video_device" value="/dev/video0" />```. You need to change ```/dev/video0``` value to the one corresponding to the usb camera. 
 This is where I had some trouble to continue. ```lsusb``` or ```lspci``` can help you to get the camera. I did not understood so far, what to replace.
 
+
+## Conclusion
+
+The Nvidia Jetson Nano can embed the Deep Pose Neural Network but quickly slow down. Few parameters can improve its efficiency. First temperature is more than important, keep it low (24°C), then some parameters in the config file can be changed also. For the rest, I advise to look for the fps of the camera that might be a good solution for performance improvement.
