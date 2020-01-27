@@ -28,7 +28,7 @@ One the Nvidia started, you can follow the repository of [Deep Pose object](http
 $ pip install -r requirements.txt
 ```
 
-Here you might have some trouble instaling libraries versions with the ones compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
+Here you might have some trouble installing libraries versions with the ones compatibles with the Nvidia Jeton Nano. In this repository, I added a requirement.txt file which contains all versions of the libraries that I was able to install. But in any case, I strongly advise you to install them one by one instead of running the command with the requirements.txt file.
 
 Then you can follow steps 5 and 6 of the Installation process, but remember to replace *kinetic* by *melodic*.
 
@@ -36,6 +36,7 @@ Then you can follow steps 5 and 6 of the Installation process, but remember to r
 ## Running
 
 - **1 Start ROS master**
+Open a terminal and run:
 ```
 $ cd ~/catkin_ws
 $ source devel/setup.bash
@@ -43,6 +44,7 @@ $ roscore
 ```
 
 - **2 Start camera node**
+Open a terminal and run:
 ```
 $ cd catkin_ws
 $ source devel/setup.bash
@@ -50,7 +52,7 @@ $ roslaunch openni2_launch openni2.launch
 ```
 
 - **3 Edit config file**
-As I am using a USB camera, you need to edit the config file at ```~/catkin_ws/src/dope/config/config_pose.yaml``` and change the two first lines to:
+If you are using a USB camera, you need to edit the config file at ```~/catkin_ws/src/dope/config/config_pose.yaml``` and change the two first lines to:
 ```
 topic_camera: "/camera/rgb/image_raw"
 topic_camera_info: "/camera/rgb/camera_info"
@@ -95,7 +97,7 @@ As we can see, all RAM **plus** swap memory are used, that might explain why the
 
 - **2. Temperature**
 
-As I said at the beginning, a fan is required to run the ros nodes on the Nvidia. At first, I started without any fan, and the Nvidia quickly freezed and crashed. With the CLI tool ```$ watch sensors``` (sudo apt-get install lm-sensors), you can see the temperature evolving over the time. 
+As I said at the beginning, a fan is required. At first, I started without any fan, and the Nvidia quickly freezed and crashed. With the CLI tool ```$ watch sensors``` (sudo apt-get install lm-sensors), you can see the temperature evolving over the time. 
 
 With a desk Fan, it can maintain the CPU temperature around 24°C. If you do not use one, the temperature can reach 57°C and beyond. I suggest you to keep the temperature as low as possible. I did not get the maximum temperature possible, but the Nvidia tends to freeze around 60°C.
 
@@ -109,9 +111,10 @@ I did it couples times to test, and it seems that the Nvidia cannot support two 
 
 If you look at the config file parameters, there is the ```downscale_height```: If the input image is larger than this, scale it down to this pixel height. Very large input images eat up all the GPU memory and slow down inference. Also, DOPE works best when the object size (in pixels) has appeared in the training data (which is downscaled to 400 px). For these reasons, downscaling large input images to something reasonable (e.g., 400-500 px) improves memory consumption, inference speed and recognition results.
 
-By default, this value is set to 500px, I change it to 400 and then to 300px. And what we can see, it divides by two the SWAP memory use thus increase performance.
+By default, this value is set to 500px, I changed it to 400 and then to 300px. And what we can see, it divides by two the SWAP memory use thus increase performance.
 
 ![downscale_height_300](img/downscale_height_300.png)
+*CPU and Memory use with 300px*
 
 NOTE: With 300px, the Nvidia can perform two objects detection without crashing.
 
@@ -132,9 +135,13 @@ $ vi launch usb_cam.launch
 
 Add the line ```<param name="framerate" value="10" />``` to test for 10fps.
 The first parameter should be ```<param name="video_device" value="/dev/video0" />```. You need to change ```/dev/video0``` value to the one corresponding to the usb camera. 
-This is where I had some trouble to continue. ```lsusb``` or ```lspci``` can help you to get the camera. I did not understood so far, what to replace.
+This is where I had some trouble to continue. ```lsusb``` or ```lspci``` commands may help you to get the camera device infos. I did not succeed to get this value and run the usb package and thus change the frame rate so far.
 
 
 ## Conclusion
 
-The Nvidia Jetson Nano can embed the Deep Pose Neural Network but quickly slow down. Few parameters can improve its efficiency. First temperature is more than important, keep it low (24°C), then some parameters in the config file can be changed also. For the rest, I advise to look for the fps of the camera that might be a good solution for performance improvement.
+The Nvidia Jetson Nano can embed the Deep Pose Neural Network but quickly slow down. The intallation step can be tricky, there are a lot of subjects in the Nvidia official Forum that are dealing with it (mainly for torch and pytorch with which I had some trouble). 
+
+Once you run the nodes, few parameters can improve the Nvidia performance. First temperature is more than important, keep it low (24°C), then some parameters in the config file can be changed also. For the rest, I advise to look for the fps of the camera that might be a good solution for performance improvement.
+
+Another solution might be to increase the RAM memory to 8Gb.
