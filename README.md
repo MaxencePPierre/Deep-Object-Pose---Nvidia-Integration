@@ -22,7 +22,7 @@ Once you flashed the Nvidia Image on the SD card, put it in the Jetson Nano and 
 I have tested on Ubuntu 16.04 with ROS Melodic with an NVIDIA Jetson Nano with python 2.7 (and thus pip). The code may work on other systems.
 
 
-One the Nvidia started, you can follow the repository of [Deep Pose object](https://github.com/NVlabs/Deep_Object_Pose) installation step by step until:
+One the Nvidia started, you can follow the repository of [Deep Pose object](https://github.com/NVlabs/Deep_Object_Pose) installation step by step **until**:
 
 ```
 $ pip install -r requirements.txt
